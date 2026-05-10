@@ -54,24 +54,25 @@ public class MovimientoServiceImpl implements MovimientoService {
 
         BigDecimal saldoActual = cuenta.getSaldo();
         BigDecimal valor = dto.getValor();
+        BigDecimal comision = com.banco.api.strategy.ComisionStrategyFactory.getStrategy(dto.getTipoMovimiento()).calcularComision(valor);
         BigDecimal nuevoSaldo;
 
-        if (dto.getTipoMovimiento() == TipoMovimiento.DEBITO) {
+        if (dto.getTipoMovimiento() == com.banco.api.model.TipoMovimiento.DEBITO) {
             // Validar saldo suficiente
             if (saldoActual.compareTo(BigDecimal.ZERO) == 0) {
                 throw new SaldoInsuficienteException("Saldo no disponible");
             }
-            if (saldoActual.compareTo(valor) < 0) {
+            if (saldoActual.compareTo(valor.add(comision)) < 0) {
                 throw new SaldoInsuficienteException(
-                        "Saldo insuficiente. Saldo actual: " + saldoActual + ", débito solicitado: " + valor);
+                        "Saldo insuficiente. Saldo actual: " + saldoActual + ", débito solicitado: " + valor + ", comisión: " + comision);
             }
 
             // Validar límite diario de retiros
             validarLimiteDiario(cuenta.getCuentaId(), valor);
 
-            nuevoSaldo = saldoActual.subtract(valor);
+            nuevoSaldo = saldoActual.subtract(valor).subtract(comision);
         } else {
-            nuevoSaldo = saldoActual.add(valor);
+            nuevoSaldo = saldoActual.add(valor).subtract(comision);
         }
 
         // Actualizar saldo de la cuenta
@@ -86,6 +87,7 @@ public class MovimientoServiceImpl implements MovimientoService {
         movimiento.setSaldoDisponible(nuevoSaldo);
         movimiento.setEstado(true);
         movimiento.setCuenta(cuenta);
+        // (Opcional) Guardar la comisión si el modelo lo permite
 
         return toResponseDTO(movimientoRepository.save(movimiento));
     }
