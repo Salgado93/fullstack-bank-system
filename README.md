@@ -33,6 +33,32 @@ Este proyecto es un sistema bancario fullstack desarrollado y documentado por **
 - Node.js >= 22.x (probado con v22.14.0)
 - Maven
 
+
+## Ejecución Fullstack con Docker
+
+Puedes levantar el backend (API) y el frontend (Angular) juntos usando el `docker-compose.yml` que está en la carpeta `bank-msa-account-movements`.
+
+### Pasos rápidos:
+
+1. Ve a la carpeta del backend:
+  ```bash
+  cd bank-msa-account-movements
+  ```
+2. Levanta todos los servicios (backend, base de datos y frontend):
+  ```bash
+  docker compose up --build -d
+  ```
+3. Accede a las aplicaciones:
+  - **Frontend Angular:**
+    - [http://localhost:4200](http://localhost:4200) (local)
+    - [http://localhost:8081](http://localhost:8081) (útil para OrbStack o acceso externo)
+  - **Backend API:**
+    - [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+> Si usas OrbStack, también puedes acceder desde la URL que te provee OrbStack para el puerto 8081.
+
+---
+
 ## Instrucciones generales
 
 ### 1. Clonar el repositorio

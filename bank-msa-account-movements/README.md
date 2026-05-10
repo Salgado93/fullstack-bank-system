@@ -34,11 +34,19 @@ bank-msa-account-movements/
    git clone <repo-url>
    cd fullstack-bank-system/bank-msa-account-movements
    ```
-2. Levanta los servicios (API + PostgreSQL):
+
+2. Levanta los servicios (API + PostgreSQL + Frontend Angular):
    ```bash
    docker compose up --build -d
    ```
+
 3. Accede a la API en: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+4. Accede al frontend Angular:
+   - [http://localhost:4200](http://localhost:4200) (local)
+   - [http://localhost:8081](http://localhost:8081) (útil para OrbStack o acceso externo)
+
+   Si usas OrbStack, también puedes acceder desde la URL que te provee OrbStack para el puerto 8081.
 
 ## Endpoints principales
 
