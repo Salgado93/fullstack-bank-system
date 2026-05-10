@@ -1,4 +1,4 @@
-# Fullstack Bank System
+# Full-Stack BP System
 
 ![Pantalla de ejemplo del frontend](./screenshot-frontend.png)
 
