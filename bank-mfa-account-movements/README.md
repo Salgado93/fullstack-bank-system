@@ -4,15 +4,33 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
 
-## Development server
 
-To start a local development server, run:
+## Despliegue con Docker
+
+Puedes levantar el frontend junto al backend usando el `docker-compose.yml` del backend. Esto construirá y expondrá el frontend automáticamente:
+
+```bash
+cd ../bank-msa-account-movements
+docker compose up --build -d
+```
+
+Acceso al frontend:
+- [http://localhost:4200](http://localhost:4200) (local)
+- [http://localhost:8081](http://localhost:8081) (útil para OrbStack o acceso externo)
+
+Si usas OrbStack, también puedes acceder desde la URL que te provee OrbStack para el puerto 8081.
+
+---
+
+## Development server (modo local)
+
+Para desarrollo local sin Docker, ejecuta:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Luego abre [http://localhost:4200](http://localhost:4200) en tu navegador.
 
 ## Code scaffolding
 
