@@ -1,60 +1,55 @@
 {
   "info": {
+    "_postman_id": "93b0b25f-0184-4873-9ea9-8d90ba0df742",
     "name": "Bank MSA - Account Movements",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:8080",
-      "type": "string"
-    },
-    {
-      "key": "clienteId",
-      "value": "1",
-      "type": "string"
-    },
-    {
-      "key": "cuentaId",
-      "value": "1",
-      "type": "string"
-    },
-    {
-      "key": "movimientoId",
-      "value": "1",
-      "type": "string"
-    }
-  ],
   "item": [
     {
       "name": "Clientes",
       "item": [
         {
           "name": "GET Listar todos los clientes",
+          "id": "ee157ce3-5b9d-437f-ada8-e3a6f97e28e1",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/clientes",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "clientes"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "GET Obtener cliente por ID",
+          "id": "77b7b80f-0d02-45bc-9775-ad496de3b0fa",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/clientes/{{clienteId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "clientes", "{{clienteId}}"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "{{clienteId}}"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "POST Crear cliente",
+          "id": "7a88be9f-5938-4716-bf60-a3d6f89bc585",
           "request": {
             "method": "POST",
             "header": [
@@ -74,13 +69,20 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/clientes",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "clientes"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "PUT Actualizar cliente",
+          "id": "a670afb3-ad06-4997-b4b5-30bed7fb414c",
           "request": {
             "method": "PUT",
             "header": [
@@ -100,54 +102,86 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/clientes/{{clienteId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "clientes", "{{clienteId}}"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "{{clienteId}}"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "DELETE Eliminar cliente",
+          "id": "a965a86a-90a1-4dc5-b202-bf8c635cbc86",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/clientes/{{clienteId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "clientes", "{{clienteId}}"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "{{clienteId}}"
+              ]
             }
-          }
+          },
+          "response": []
         }
-      ]
+      ],
+      "id": "24b7f5e2-ae91-4718-afa0-f9a0d8ba126f"
     },
     {
       "name": "Cuentas",
       "item": [
         {
           "name": "GET Listar todas las cuentas",
+          "id": "abdbfcfe-9635-42a3-b90a-8a100d6b0986",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/cuentas",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "cuentas"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "GET Obtener cuenta por ID",
+          "id": "d5862f7b-5876-44cd-904e-49b67bad826d",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/cuentas/{{cuentaId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "cuentas", "{{cuentaId}}"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "{{cuentaId}}"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "POST Crear cuenta",
+          "id": "546c4a26-61e9-4703-b93b-eba3c6199c8b",
           "request": {
             "method": "POST",
             "header": [
@@ -167,14 +201,21 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/cuentas",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "cuentas"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas"
+              ]
             },
             "description": "tipoCuenta enum values: AHORROS or CORRIENTE"
-          }
+          },
+          "response": []
         },
         {
           "name": "PUT Actualizar cuenta",
+          "id": "65d3a8af-db05-43a5-8247-3aed00773dbf",
           "request": {
             "method": "PUT",
             "header": [
@@ -194,54 +235,86 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/cuentas/{{cuentaId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "cuentas", "{{cuentaId}}"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "{{cuentaId}}"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "DELETE Eliminar cuenta",
+          "id": "8423c73e-4458-4742-a60f-17725be3daf3",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/cuentas/{{cuentaId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "cuentas", "{{cuentaId}}"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "{{cuentaId}}"
+              ]
             }
-          }
+          },
+          "response": []
         }
-      ]
+      ],
+      "id": "7cb0e467-15e2-473a-91de-db02d3116613"
     },
     {
       "name": "Movimientos",
       "item": [
         {
           "name": "GET Listar todos los movimientos",
+          "id": "57df8972-ceca-48cb-987c-963d44a08f17",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/movimientos",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "movimientos"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "GET Obtener movimiento por ID",
+          "id": "0b7df38b-a2ec-44a0-a427-168973dacf9b",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/movimientos/{{movimientoId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "movimientos", "{{movimientoId}}"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "{{movimientoId}}"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "POST Crear movimiento",
+          "id": "cc6c3d95-1c67-4703-bd12-0ac87f001787",
           "request": {
             "method": "POST",
             "header": [
@@ -261,14 +334,21 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/movimientos",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "movimientos"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos"
+              ]
             },
             "description": "tipoMovimiento enum values: CREDITO or DEBITO"
-          }
+          },
+          "response": []
         },
         {
           "name": "PUT Actualizar movimiento",
+          "id": "a68fe314-3119-4d3b-8986-725533b3ea69",
           "request": {
             "method": "PUT",
             "header": [
@@ -288,55 +368,108 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/movimientos/{{movimientoId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "movimientos", "{{movimientoId}}"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "{{movimientoId}}"
+              ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "DELETE Eliminar movimiento",
+          "id": "acf9e934-efe6-40eb-ae63-5a389f6b3f7a",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/movimientos/{{movimientoId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "movimientos", "{{movimientoId}}"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "{{movimientoId}}"
+              ]
             }
-          }
+          },
+          "response": []
         }
-      ]
+      ],
+      "id": "34078ec9-90d4-48ef-a836-6a562ca62c67"
     },
     {
       "name": "Reportes",
       "item": [
         {
           "name": "GET Generar reporte de movimientos",
+          "id": "75d22e6c-76d3-4e4e-8989-da6e16dd4ff4",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/reportes?clienteId={{clienteId}}&inicio=2024-01-01&fin=2024-12-31",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "reportes"],
+              "raw": "{{baseUrl}}/api/reportes?clienteId={{clienteId}}&inicio=2024-01-01&fin=2026-05-10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "reportes"
+              ],
               "query": [
                 {
                   "key": "clienteId",
-                  "value": "{{clienteId}}"
+                  "value": "{{clienteId}}",
+                  "uuid": "b9850377-9edc-4aff-92c5-dc816a12678d"
                 },
                 {
                   "key": "inicio",
-                  "value": "2024-01-01"
+                  "value": "2024-01-01",
+                  "uuid": "804eab8c-16bc-4aa4-8188-dbbc63151c9b"
                 },
                 {
                   "key": "fin",
-                  "value": "2024-12-31"
+                  "value": "2026-05-10",
+                  "uuid": "a21fc79e-3843-4fa5-b4bb-369f43cb3fb4"
                 }
               ]
             }
-          }
+          },
+          "response": []
         }
-      ]
+      ],
+      "id": "26ca5e6f-546d-4470-a117-55039687d25c"
+    }
+  ],
+  "variable": [
+    {
+      "id": "2d7f3a8b-267e-47eb-b16a-1609b305cb6e",
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "id": "4968b69f-26ff-47a7-9203-4e9dae1da4c2",
+      "key": "clienteId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "id": "d2f4b4b6-0a54-42e6-8b22-5442fafd85fa",
+      "key": "cuentaId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "id": "ec307a52-1795-4155-98e5-a6fd1ba8457b",
+      "key": "movimientoId",
+      "value": "1",
+      "type": "string"
     }
   ]
 }
