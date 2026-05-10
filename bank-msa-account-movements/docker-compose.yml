@@ -39,6 +39,18 @@ services:
     networks:
       - banco-network
 
+  frontend:
+    build:
+      context: ../bank-mfa-account-movements
+      dockerfile: Dockerfile
+    container_name: banco-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - app
+    networks:
+      - banco-network
+
 volumes:
   postgres_data:
 

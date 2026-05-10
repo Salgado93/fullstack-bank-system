@@ -1,0 +1,60 @@
+<div class="cliente-list">
+  <h2 class="page__title">Clientes</h2>
+
+  <div class="cliente-list__toolbar">
+    <input
+      class="search__input"
+      type="text"
+      placeholder="Buscar por nombre o identificación..."
+      [ngModel]="searchTerm()"
+      (ngModelChange)="onSearch($event)"
+    />
+    <a class="btn btn--primary" routerLink="/clientes/nuevo">+ Nuevo Cliente</a>
+  </div>
+
+  @if (loading()) {
+    <p class="cliente-list__loading">Cargando...</p>
+  } @else {
+    <table class="table">
+      <thead class="table__head">
+        <tr>
+          <th class="table__th">Nombre</th>
+          <th class="table__th">Identificación</th>
+          <th class="table__th">Género</th>
+          <th class="table__th">Edad</th>
+          <th class="table__th">Dirección</th>
+          <th class="table__th">Teléfono</th>
+          <th class="table__th">Estado</th>
+          <th class="table__th">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (cliente of clientesFiltrados(); track cliente.id) {
+          <tr class="table__tr">
+            <td class="table__td">{{ cliente.nombre }}</td>
+            <td class="table__td">{{ cliente.identificacion }}</td>
+            <td class="table__td">{{ cliente.genero }}</td>
+            <td class="table__td">{{ cliente.edad }}</td>
+            <td class="table__td">{{ cliente.direccion }}</td>
+            <td class="table__td">{{ cliente.telefono }}</td>
+            <td class="table__td">
+              <span class="badge" [class.badge--active]="cliente.estado" [class.badge--inactive]="!cliente.estado">
+                {{ cliente.estado ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td class="table__td">
+              <div class="table__actions">
+                <a class="btn btn--primary btn--small" [routerLink]="['/clientes/editar', cliente.id]">Editar</a>
+                <button class="btn btn--danger btn--small" (click)="eliminar(cliente.id)">Eliminar</button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td class="table__td" colspan="8">No se encontraron clientes.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

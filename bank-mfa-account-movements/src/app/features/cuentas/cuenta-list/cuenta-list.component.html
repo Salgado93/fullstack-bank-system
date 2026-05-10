@@ -1,0 +1,52 @@
+<div class="cuenta-list">
+  <h2 class="page__title">Cuentas</h2>
+
+  <div class="cuenta-list__toolbar">
+    <span></span>
+    <a class="btn btn--primary" routerLink="/cuentas/nueva">+ Nueva Cuenta</a>
+  </div>
+
+  @if (loading()) {
+    <p class="cuenta-list__loading">Cargando...</p>
+  } @else {
+    <table class="table">
+      <thead class="table__head">
+        <tr>
+          <th class="table__th">Nro. Cuenta</th>
+          <th class="table__th">Tipo</th>
+          <th class="table__th">Saldo Inicial</th>
+          <th class="table__th">Saldo Actual</th>
+          <th class="table__th">Cliente</th>
+          <th class="table__th">Estado</th>
+          <th class="table__th">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (cuenta of cuentas(); track cuenta.cuentaId) {
+          <tr class="table__tr">
+            <td class="table__td">{{ cuenta.numeroCuenta }}</td>
+            <td class="table__td">{{ cuenta.tipoCuenta }}</td>
+            <td class="table__td">{{ cuenta.saldoInicial | currency:'USD' }}</td>
+            <td class="table__td">{{ cuenta.saldo | currency:'USD' }}</td>
+            <td class="table__td">{{ cuenta.clienteNombre }}</td>
+            <td class="table__td">
+              <span class="badge" [class.badge--active]="cuenta.estado" [class.badge--inactive]="!cuenta.estado">
+                {{ cuenta.estado ? 'Activa' : 'Inactiva' }}
+              </span>
+            </td>
+            <td class="table__td">
+              <div class="table__actions">
+                <a class="btn btn--primary btn--small" [routerLink]="['/cuentas/editar', cuenta.cuentaId]">Editar</a>
+                <button class="btn btn--danger btn--small" (click)="eliminar(cuenta.cuentaId)">Eliminar</button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td class="table__td" colspan="7">No se encontraron cuentas.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

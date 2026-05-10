@@ -1,0 +1,15 @@
+.cuenta-list {
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__loading {
+    text-align: center;
+    color: #757575;
+    padding: 40px;
+    font-size: 16px;
+  }
+}

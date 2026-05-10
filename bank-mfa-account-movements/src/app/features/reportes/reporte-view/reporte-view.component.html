@@ -1,0 +1,94 @@
+<div class="reporte-view">
+  <h2 class="page__title">Reportes</h2>
+
+  <form class="reporte-view__filters" [formGroup]="form" (ngSubmit)="buscar()">
+    <div class="form__group">
+      <label class="form__label" for="clienteId">Cliente *</label>
+      <select class="form__select" id="clienteId" formControlName="clienteId">
+        <option [ngValue]="null">Seleccionar cliente...</option>
+        @for (cliente of clientes(); track cliente.id) {
+          <option [ngValue]="cliente.id">{{ cliente.nombre }}</option>
+        }
+      </select>
+      @if (hasError('clienteId')) {
+        <span class="form__error">Seleccione un cliente</span>
+      }
+    </div>
+
+    <div class="form__group">
+      <label class="form__label" for="inicio">Fecha Inicio *</label>
+      <input class="form__input" id="inicio" type="date" formControlName="inicio" />
+      @if (hasError('inicio')) {
+        <span class="form__error">Fecha de inicio requerida</span>
+      }
+    </div>
+
+    <div class="form__group">
+      <label class="form__label" for="fin">Fecha Fin *</label>
+      <input class="form__input" id="fin" type="date" formControlName="fin" />
+      @if (hasError('fin')) {
+        <span class="form__error">Fecha de fin requerida</span>
+      }
+    </div>
+
+    <button class="btn btn--primary" type="submit" [disabled]="loading()">
+      {{ loading() ? 'Buscando...' : 'Generar Reporte' }}
+    </button>
+  </form>
+
+  @if (reporte(); as r) {
+    <div class="reporte-view__result">
+      <div class="reporte-view__header">
+        <div class="reporte-view__info">
+          <h3 class="reporte-view__cliente">{{ r.cliente }}</h3>
+          <span class="reporte-view__periodo">{{ r.fechaInicio }} — {{ r.fechaFin }}</span>
+        </div>
+        <button class="btn btn--success" (click)="descargarPdf()">Descargar PDF</button>
+      </div>
+
+      <div class="reporte-view__totals">
+        <div class="reporte-view__total reporte-view__total--credito">
+          <span class="reporte-view__total-label">Total Créditos</span>
+          <span class="reporte-view__total-value">{{ r.totalCreditos | currency:'USD' }}</span>
+        </div>
+        <div class="reporte-view__total reporte-view__total--debito">
+          <span class="reporte-view__total-label">Total Débitos</span>
+          <span class="reporte-view__total-value">{{ r.totalDebitos | currency:'USD' }}</span>
+        </div>
+      </div>
+
+      <table class="table">
+        <thead class="table__head">
+          <tr>
+            <th class="table__th">Fecha</th>
+            <th class="table__th">Nro. Cuenta</th>
+            <th class="table__th">Tipo Cuenta</th>
+            <th class="table__th">Saldo Inicial</th>
+            <th class="table__th">Movimiento</th>
+            <th class="table__th">Saldo Disponible</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (mov of r.movimientos; track $index) {
+            <tr class="table__tr">
+              <td class="table__td">{{ mov.fecha }}</td>
+              <td class="table__td">{{ mov.numeroCuenta }}</td>
+              <td class="table__td">{{ mov.tipoCuenta }}</td>
+              <td class="table__td">{{ mov.saldoInicial | currency:'USD' }}</td>
+              <td class="table__td"
+                  [class.reporte-view__credito]="mov.movimiento >= 0"
+                  [class.reporte-view__debito]="mov.movimiento < 0">
+                {{ mov.movimiento | currency:'USD' }}
+              </td>
+              <td class="table__td">{{ mov.saldoDisponible | currency:'USD' }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td class="table__td" colspan="6">No hay movimientos en este período.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

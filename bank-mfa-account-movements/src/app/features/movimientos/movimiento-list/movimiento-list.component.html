@@ -1,0 +1,52 @@
+<div class="movimiento-list">
+  <h2 class="page__title">Movimientos</h2>
+
+  <div class="movimiento-list__toolbar">
+    <span></span>
+    <a class="btn btn--primary" routerLink="/movimientos/nuevo">+ Nuevo Movimiento</a>
+  </div>
+
+  @if (loading()) {
+    <p class="movimiento-list__loading">Cargando...</p>
+  } @else {
+    <table class="table">
+      <thead class="table__head">
+        <tr>
+          <th class="table__th">Fecha</th>
+          <th class="table__th">Nro. Cuenta</th>
+          <th class="table__th">Tipo</th>
+          <th class="table__th">Valor</th>
+          <th class="table__th">Saldo Disponible</th>
+          <th class="table__th">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (mov of movimientos(); track mov.movimientoId) {
+          <tr class="table__tr">
+            <td class="table__td">{{ mov.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td class="table__td">{{ mov.numeroCuenta }}</td>
+            <td class="table__td">
+              <span class="badge" [class.badge--credito]="mov.tipoMovimiento === 'CREDITO'"
+                    [class.badge--debito]="mov.tipoMovimiento === 'DEBITO'">
+                {{ mov.tipoMovimiento }}
+              </span>
+            </td>
+            <td class="table__td">
+              {{ mov.tipoMovimiento === 'DEBITO' ? '-' : '+' }}{{ mov.valor | currency:'USD' }}
+            </td>
+            <td class="table__td">{{ mov.saldoDisponible | currency:'USD' }}</td>
+            <td class="table__td">
+              <div class="table__actions">
+                <button class="btn btn--danger btn--small" (click)="eliminar(mov.movimientoId)">Eliminar</button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td class="table__td" colspan="6">No se encontraron movimientos.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

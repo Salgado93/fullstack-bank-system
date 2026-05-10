@@ -1,0 +1,93 @@
+.reporte-view {
+  &__filters {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    background-color: #ffffff;
+    padding: 20px 24px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+
+    .form__group {
+      margin-bottom: 0;
+      min-width: 180px;
+    }
+  }
+
+  &__result {
+    margin-top: 8px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__cliente {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0F265C;
+  }
+
+  &__periodo {
+    font-size: 13px;
+    color: #757575;
+  }
+
+  &__totals {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    min-width: 200px;
+
+    &--credito {
+      background-color: #B4DCBE;
+      border-left: 4px solid #1B5E20;
+    }
+
+    &--debito {
+      background-color: #FDDEDE;
+      border-left: 4px solid #C41F24;
+    }
+  }
+
+  &__total-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555555;
+  }
+
+  &__total-value {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &__credito {
+    color: #1B5E20;
+    font-weight: 600;
+  }
+
+  &__debito {
+    color: #C41F24;
+    font-weight: 600;
+  }
+}

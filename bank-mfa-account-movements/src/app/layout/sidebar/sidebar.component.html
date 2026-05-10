@@ -1,0 +1,14 @@
+<nav class="sidebar">
+  <ul class="sidebar__menu">
+    @for (item of menuItems; track item.route) {
+      <li class="sidebar__item">
+        <a class="sidebar__link"
+           [routerLink]="item.route"
+           routerLinkActive="sidebar__link--active">
+          <span class="sidebar__icon">{{ item.icon }}</span>
+          <span class="sidebar__label">{{ item.label }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

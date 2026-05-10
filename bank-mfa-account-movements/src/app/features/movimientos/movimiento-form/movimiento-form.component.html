@@ -1,0 +1,53 @@
+<div class="movimiento-form">
+  <h2 class="page__title">Nuevo Movimiento</h2>
+
+  <form class="form" [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="form__group">
+      <label class="form__label" for="cuentaId">Cuenta *</label>
+      <select class="form__select" id="cuentaId" formControlName="cuentaId">
+        <option [ngValue]="null">Seleccionar cuenta...</option>
+        @for (cuenta of cuentas(); track cuenta.cuentaId) {
+          <option [ngValue]="cuenta.cuentaId">
+            {{ cuenta.numeroCuenta }} - {{ cuenta.tipoCuenta }} ({{ cuenta.clienteNombre }})
+          </option>
+        }
+      </select>
+      @if (hasError('cuentaId')) {
+        <span class="form__error">Seleccione una cuenta</span>
+      }
+    </div>
+
+    @if (cuentaSeleccionada(); as cuenta) {
+      <div class="movimiento-form__saldo-info">
+        <span class="movimiento-form__saldo-label">Saldo actual:</span>
+        <span class="movimiento-form__saldo-value">{{ cuenta.saldo | currency:'USD' }}</span>
+      </div>
+    }
+
+    <div class="form__group">
+      <label class="form__label" for="tipoMovimiento">Tipo de Movimiento *</label>
+      <select class="form__select" id="tipoMovimiento" formControlName="tipoMovimiento">
+        <option value="">Seleccionar...</option>
+        <option value="CREDITO">Crédito (Depósito)</option>
+        <option value="DEBITO">Débito (Retiro)</option>
+      </select>
+      @if (hasError('tipoMovimiento')) {
+        <span class="form__error">Seleccione un tipo de movimiento</span>
+      }
+    </div>
+
+    <div class="form__group">
+      <label class="form__label" for="valor">Valor *</label>
+      <input class="form__input" [class.form__input--error]="hasError('valor')"
+             id="valor" type="number" step="0.01" formControlName="valor" placeholder="0.00" />
+      @if (hasError('valor')) {
+        <span class="form__error">Ingrese un valor mayor a 0</span>
+      }
+    </div>
+
+    <div class="form__actions">
+      <button class="btn btn--success" type="submit">Registrar Movimiento</button>
+      <a class="btn btn--secondary" routerLink="/movimientos">Cancelar</a>
+    </div>
+  </form>
+</div>

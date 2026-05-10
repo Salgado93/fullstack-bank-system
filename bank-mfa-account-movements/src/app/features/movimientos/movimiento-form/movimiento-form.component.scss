@@ -1,0 +1,26 @@
+.movimiento-form {
+  max-width: 640px;
+
+  &__saldo-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background-color: #E8EDF5;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    border-left: 4px solid #0F265C;
+  }
+
+  &__saldo-label {
+    font-weight: 600;
+    color: #0F265C;
+    font-size: 14px;
+  }
+
+  &__saldo-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0F265C;
+  }
+}
