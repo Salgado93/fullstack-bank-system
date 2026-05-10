@@ -15,7 +15,8 @@
   @if (loading()) {
     <p class="cliente-list__loading">Cargando...</p>
   } @else {
-    <table class="table">
+    <div class="table-responsive">
+      <table class="table">
       <thead class="table__head">
         <tr>
           <th class="table__th">Nombre</th>
@@ -55,6 +56,7 @@
           </tr>
         }
       </tbody>
-    </table>
+      </table>
+    </div>
   }
 </div>

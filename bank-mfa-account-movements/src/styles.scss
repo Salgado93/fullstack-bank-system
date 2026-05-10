@@ -1,3 +1,67 @@
+// =====================
+// Responsive (Mobile)
+// =====================
+@media (max-width: 900px) {
+  .app__container {
+    flex-direction: column;
+    height: auto;
+  }
+  .sidebar {
+    width: 100%;
+    min-height: unset;
+    position: static;
+    left: unset;
+    top: unset;
+    z-index: 200;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transform: none;
+    transition: none;
+  }
+  /* Elimina la lógica de .sidebar.open */
+  .sidebar__menu {
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar__link {
+    padding: 16px;
+    font-size: 18px;
+  }
+  .app__content {
+    padding: 16px 6px;
+  }
+  .header {
+    padding: 0 12px;
+  }
+  .header__title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    height: 48px;
+  }
+  .header__logo {
+    width: 20px;
+    height: 20px;
+  }
+  .header__title {
+    font-size: 15px;
+  }
+  .sidebar__link {
+    font-size: 16px;
+    padding: 12px;
+  }
+  .table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table__head, .table__tr, .table__td, .table__th {
+    white-space: nowrap;
+  }
+}
 *,
 *::before,
 *::after {
@@ -96,8 +160,14 @@ input, select, textarea {
   }
 }
 
-.table {
+.table-responsive {
   width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  min-width: 600px;
   border-collapse: collapse;
   background-color: #ffffff;
   border-radius: 8px;

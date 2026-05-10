@@ -1,8 +1,13 @@
- .sidebar {
+.sidebar {
   width: 220px;
   min-height: 100%;
   background-color: #fff;
   padding-top: 16px;
+  transition: transform 0.3s;
+  position: relative;
+  z-index: 200;
+  overflow-y: auto;
+  max-height: calc(100vh - 60px);
 
   &__menu {
     list-style: none;
@@ -44,5 +49,19 @@
 
   &__label {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 100%;
+    padding-top: 0;
+    /* Si el menú es muy largo, solo el sidebar hace scroll */
+    overflow-y: auto;
+    max-height: none;
+  }
+  .sidebar__menu {
+    max-height: none;
+    overflow-y: visible;
   }
 }

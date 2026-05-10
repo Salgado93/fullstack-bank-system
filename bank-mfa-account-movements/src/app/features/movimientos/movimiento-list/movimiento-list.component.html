@@ -9,7 +9,8 @@
   @if (loading()) {
     <p class="movimiento-list__loading">Cargando...</p>
   } @else {
-    <table class="table">
+    <div class="table-responsive">
+      <table class="table">
       <thead class="table__head">
         <tr>
           <th class="table__th">Fecha</th>
@@ -47,6 +48,7 @@
           </tr>
         }
       </tbody>
-    </table>
+      </table>
+    </div>
   }
 </div>

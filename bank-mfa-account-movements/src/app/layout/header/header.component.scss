@@ -8,10 +8,21 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 100;
 
+  .header__menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    margin-right: 12px;
+    color: #0F265C;
+    cursor: pointer;
+  }
+
   &__brand {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex: 1;
   }
 
   &__logo {
@@ -26,4 +37,10 @@
     letter-spacing: 2px;
     margin: 0;
   }
+
+@media (max-width: 900px) {
+  .header__menu-btn {
+    display: block;
+  }
+}
 }
