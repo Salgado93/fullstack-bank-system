@@ -59,36 +59,36 @@ VALUES
     ('Jose Lema', 'Masculino', 30, '1234567890', true),
     ('Marianela Montalvo', 'Femenino', 28, '0987654321', true),
     ('Juan Osorio', 'Masculino', 35, '1122334455', true)
-ON CONFLICT (identificacion) DO NOTHING;
+;
 
 INSERT INTO clientes (persona_id, cliente_id, direccion, telefono, password)
 SELECT id, 'CLI-' || LPAD(id::text, 4, '0'), 'Otavalo sn y principal', '098254785', 'clave123'
 FROM personas WHERE identificacion = '1234567890'
-ON CONFLICT (persona_id) DO NOTHING;
+;
 
 INSERT INTO clientes (persona_id, cliente_id, direccion, telefono, password)
 SELECT id, 'CLI-' || LPAD(id::text, 4, '0'), 'Amazonas y NNUU', '097548965', 'clave456'
 FROM personas WHERE identificacion = '0987654321'
-ON CONFLICT (persona_id) DO NOTHING;
+;
 
 INSERT INTO clientes (persona_id, cliente_id, direccion, telefono, password)
 SELECT id, 'CLI-' || LPAD(id::text, 4, '0'), '13 junio y Equinoccial', '098874587', 'clave789'
 FROM personas WHERE identificacion = '1122334455'
-ON CONFLICT (persona_id) DO NOTHING;
+;
 
 -- Insertar cuentas de ejemplo
 INSERT INTO cuentas (numero_cuenta, tipo_cuenta, saldo_inicial, saldo, estado, cliente_id)
 SELECT '478758', 'AHORROS', 2000.00, 2000.00, true, id FROM personas WHERE identificacion = '1234567890'
-ON CONFLICT (numero_cuenta) DO NOTHING;
+;
 
 INSERT INTO cuentas (numero_cuenta, tipo_cuenta, saldo_inicial, saldo, estado, cliente_id)
 SELECT '225487', 'CORRIENTE', 100.00, 100.00, true, id FROM personas WHERE identificacion = '0987654321'
-ON CONFLICT (numero_cuenta) DO NOTHING;
+;
 
 INSERT INTO cuentas (numero_cuenta, tipo_cuenta, saldo_inicial, saldo, estado, cliente_id)
 SELECT '495878', 'AHORROS', 0.00, 0.00, true, id FROM personas WHERE identificacion = '1122334455'
-ON CONFLICT (numero_cuenta) DO NOTHING;
+;
 
 INSERT INTO cuentas (numero_cuenta, tipo_cuenta, saldo_inicial, saldo, estado, cliente_id)
 SELECT '496825', 'AHORROS', 540.00, 540.00, true, id FROM personas WHERE identificacion = '0987654321'
-ON CONFLICT (numero_cuenta) DO NOTHING;
+;
